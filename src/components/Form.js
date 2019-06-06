@@ -19,6 +19,7 @@ class Form extends React.Component {
                 <h3>{this.props.formTitle}</h3>
                 <form onSubmit={this.handleSubmit}>
                     <input type="number" 
+                            className="quantity"  
                             placeholder="quantité" 
                             value={this.state.quantity}
                             onChange={(event) => this.setState({ quantity: event.target.value })}                            
@@ -28,7 +29,7 @@ class Form extends React.Component {
                             value={this.state.name} 
                             onChange={(event) => this.setState({ name: event.target.value })}
                             />
-                    <button type="submit">ajouter</button>
+                    <button type="submit" className="btn btn-success">ajouter</button>
                 </form>
             </div> 
         );
