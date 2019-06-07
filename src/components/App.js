@@ -5,16 +5,6 @@ import Form from './Form';
 import Itemlist from './ItemList';
 
 class App extends React.Component {
-    //state = { 
-    //    articles: []
-    //}
-
-    //addArticle = (article) => {
-    //    let oldArticles = this.state.articles;
-    //    article.id = this.state.articles.length + 1;
-    //    let newArticles = [...oldArticles, article];
-    //    this.setState({ articles: newArticles});        
-    //}
 
     render() {
         return (
@@ -45,12 +35,23 @@ const mapStateToProps = (state) => {
           payload: article
       }
   }
+
+  const removeArticleActionCreator = (articleId) => {
+    return {
+        type: 'REMOVE_ARTICLE',
+        payload: articleId
+    }
+}
+
   
   const mapDispatchToProps = (dispatch) => {
       return {
           addArticle: (article) => {
-              dispatch(addArticleActionCreator(article))
-          }
+            dispatch(addArticleActionCreator(article));        
+        },
+         removeArticle: (articleId) => {
+            dispatch(removeArticleActionCreator(articleId));
+        }  
       };
   };
   
