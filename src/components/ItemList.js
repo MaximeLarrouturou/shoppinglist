@@ -7,7 +7,7 @@ const ItemList = (props) => {
         <div>
             <div>Achats prévus</div>
             {
-                props.articles.map(article => <Article data={article} key={article.id} />)
+                props.articles.map(article => <Article key={article.id} article={article} removeArticle={props.removeArticle} />)
             } 
         </div>
     );
