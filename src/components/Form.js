@@ -1,5 +1,26 @@
 import React from 'react';
-import '../style.css';
+//import '../style.css';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles(theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    textField: {
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+    },
+    dense: {
+      marginTop: theme.spacing(2),
+    },
+    menu: {
+      width: 200,
+    },
+  }));
+  
 
 class Form extends React.Component {
     state = {
@@ -18,19 +39,23 @@ class Form extends React.Component {
         return (
             <div>
                 <h3>{this.props.formTitle}</h3>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="number" 
+                <form  onSubmit={this.handleSubmit}>
+                <TextField type="number" 
                             className="quantity"  
-                            placeholder="quantité" 
+                            placeholder="quantité"
+                            margin="normal"
+                            variant="outlined" 
                             value={this.state.quantity}
                             onChange={(event) => this.setState({ quantity: event.target.value })}                            
                     />
-                    <input type="text" 
+                    <TextField type="text" 
                             placeholder="article"                     
                             value={this.state.name} 
+                            margin="normal"
+                            variant="outlined"
                             onChange={(event) => this.setState({ name: event.target.value })}
                             />
-                    <button type="submit" className="btn btn-success">ajouter</button>
+                    <Button type="submit" variant="contained" color="primary">ajouter</Button> {/*<button type="submit" className="btn btn-success">ajouter</button>*/}
                 </form>
             </div> 
         );
