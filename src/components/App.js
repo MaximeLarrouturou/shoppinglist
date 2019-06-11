@@ -1,34 +1,26 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-
 import Form from './Form';
 import Itemlist from './ItemList';
-
+import { Row, Col, Divider } from 'antd';
 
 class App extends React.Component {
-
+    
     render() {
         return (
-            <React.Fragment>
-                <CssBaseline />
-                <Container maxWidth="sm">
-                    <div>
-                        <h1>Liste de courses</h1>
-                        <div>
-                            < Form formTitle="Ajouter des articles à acheter"addArticle={this.props.addArticle}/>
-                            <br />
-                            <hr />
-                            < Itemlist articles={this.props.articles} 
-                                        removeArticle={this.props.removeArticle} 
-                                        editArticle={this.props.editArticle} 
-                            />
-                        </div>
-                    </div>
-                </Container>
-            </React.Fragment>
+<Row>
+    <Col span={12} offset={6}>
+            <h1>Liste de courses</h1>
+                < Form formTitle="Ajouter des articles à acheter"addArticle={this.props.addArticle}/>
+                <Divider>Achats Prévus</Divider>
+                < Itemlist articles={this.props.articles} 
+                            removeArticle={this.props.removeArticle} 
+                            editArticle={this.props.editArticle} 
+                />
+    </Col>
+</Row>
+
         );
     }
 }

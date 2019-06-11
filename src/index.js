@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
+import 'antd/dist/antd.css';
+import './style.css';
 
 import App from './components/App';
 

@@ -1,28 +1,7 @@
 import React from 'react';
-//import '../style.css';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import { Form, Input, Button } from 'antd';
 
-const useStyles = makeStyles(theme => ({
-    container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-    },
-    dense: {
-      marginTop: theme.spacing(2),
-    },
-    menu: {
-      width: 200,
-    },
-  }));
-  
-
-class Form extends React.Component {
+class Forms extends React.Component {
     state = {
         name: '',
         quantity: 0
@@ -36,30 +15,31 @@ class Form extends React.Component {
     }
 
     render() {
+
         return (
             <div>
                 <h3>{this.props.formTitle}</h3>
-                <form  onSubmit={this.handleSubmit}>
-                <TextField type="number" 
-                            className="quantity"  
-                            placeholder="quantité"
-                            margin="normal"
-                            variant="outlined" 
-                            value={this.state.quantity}
-                            onChange={(event) => this.setState({ quantity: event.target.value })}                            
-                    />
-                    <TextField type="text" 
-                            placeholder="article"                     
-                            value={this.state.name} 
-                            margin="normal"
-                            variant="outlined"
-                            onChange={(event) => this.setState({ name: event.target.value })}
-                            />
-                    <Button type="submit" variant="contained" color="primary">ajouter</Button> {/*<button type="submit" className="btn btn-success">ajouter</button>*/}
-                </form>
+                <Form  onSubmit={this.handleSubmit}>
+                <div className="example-input">
+                  <Input      
+                      type="number"           
+                      className="quantity"  
+                      placeholder="quantité"
+                      value={this.state.quantity}
+                      onChange={(event) => this.setState({ quantity: event.target.value })}                                   
+                  />     
+                  <Input 
+                      type="text" 
+                      placeholder="article"                     
+                      value={this.state.name} 
+                      onChange={(event) => this.setState({ name: event.target.value })}          
+                  />
+                </div>
+                    <Button type="primary" htmlType="submit">ajouter</Button> {/*<button type="submit" className="btn btn-success">ajouter</button>*/}
+                </Form>
             </div> 
         );
     }
-};
+}
 
-export default Form; 
+export default Forms; 

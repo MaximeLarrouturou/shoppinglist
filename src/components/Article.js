@@ -1,5 +1,6 @@
 import React from 'react';
-import '../style.css';
+
+import { Button, Row, Input } from 'antd';
 
 class Article extends React.Component {
     state = { isInEditMode: false }
@@ -29,23 +30,22 @@ class Article extends React.Component {
     render() {
         const {article} = this.props;
         return (
-            <div>
-                <div key={article.id}>
-                    <button className="btn btn-warning btn-xs edit" onClick={() => this.editArticle(article)}>modifier</button>
-                    <button className="btn btn-danger btn-xs suppr" onClick={() => this.handleRemove(article.id)}>supprimer</button>
+            <Row>
+                <div className="example-input" key={article.id}>
+                    <Button type="primary" className="edit" onClick={() => this.editArticle(article)}>modifier</Button>
+                    <Button type="danger" className="suppr" onClick={() => this.handleRemove(article.id)}>supprimer</Button>
                     {
                         this.state.isInEditMode ?
                             <span>
-                                <input type="number" value={article.quantity} 
+                                <Input type="number" value={article.quantity} 
                                         onChange={(event) => this.handleQuantityEdit(event, article)} />
-                                <input type="text" value={article.name} 
+                                <Input type="text" value={article.name} 
                                         onChange={(event) => this.handleNameEdit(event, article)} />
                             </span>
-
                         : <span>{article.quantity} {article.name}</span>
                     }
                 </div>
-            </div>
+            </Row>
         )
     }
 }
