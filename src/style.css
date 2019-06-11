@@ -9,6 +9,6 @@ input[type="text"], input[type="number"] {
 }
 
 .example-input .ant-input {
-    width: 200px;
+    width: 100px;
     margin: 0 8px 8px 0;
   }

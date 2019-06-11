@@ -3,24 +3,50 @@ import {connect} from 'react-redux';
 
 import Form from './Form';
 import Itemlist from './ItemList';
-import { Row, Col, Divider } from 'antd';
+import { Row, Col, Divider, Skeleton, Switch, Card, Icon} from 'antd';
+
 
 class App extends React.Component {
+    state = {
+        loading: true,
+      };
+
+      onChange = checked => {
+        this.setState({ loading: !checked });
+      };
     
     render() {
-        return (
-<Row>
-    <Col span={12} offset={6}>
-            <h1>Liste de courses</h1>
-                < Form formTitle="Ajouter des articles à acheter"addArticle={this.props.addArticle}/>
-                <Divider>Achats Prévus</Divider>
-                < Itemlist articles={this.props.articles} 
+    
+        const { loading } = this.state;
+
+        return ( 
+
+        <Row>
+            <Col lg={{ span: 12, offset: 6 }}>
+                <Switch checked={!loading} onChange={this.onChange}  style={{ marginTop: 16, marginLeft:16 }}/>
+                    <Card style={{ marginTop: 16 }} >
+                        <Skeleton loading={loading} active>
+                            <h1>Liste de courses</h1>
+                            < Form formTitle="Ajouter des articles à acheter"addArticle={this.props.addArticle}/>
+                        </Skeleton>
+                    </Card>
+
+                    <Divider>Achats Prévus</Divider>
+
+                    <Card
+                    style={{ marginTop: 16 }}
+                    actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
+                    >
+                        <Skeleton loading={loading} active>                       
+                            < Itemlist articles={this.props.articles} 
                             removeArticle={this.props.removeArticle} 
                             editArticle={this.props.editArticle} 
-                />
-    </Col>
-</Row>
-
+                            /> 
+                        </Skeleton>
+                    </Card>
+            </Col>
+        </Row>
+  
         );
     }
 }

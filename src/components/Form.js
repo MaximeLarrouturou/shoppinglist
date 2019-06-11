@@ -34,8 +34,9 @@ class Forms extends React.Component {
                       value={this.state.name} 
                       onChange={(event) => this.setState({ name: event.target.value })}          
                   />
+                  <Button type="primary" htmlType="submit">ajouter</Button> {/*<button type="submit" className="btn btn-success">ajouter</button>*/}
                 </div>
-                    <Button type="primary" htmlType="submit">ajouter</Button> {/*<button type="submit" className="btn btn-success">ajouter</button>*/}
+                    
                 </Form>
             </div> 
         );

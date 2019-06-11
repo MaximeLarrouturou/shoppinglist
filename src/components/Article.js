@@ -32,7 +32,7 @@ class Article extends React.Component {
         return (
             <Row>
                 <div className="example-input" key={article.id}>
-                    <Button type="primary" className="edit" onClick={() => this.editArticle(article)}>modifier</Button>
+                    <Button type="warning" className="edit" onClick={() => this.editArticle(article)}>modifier</Button>
                     <Button type="danger" className="suppr" onClick={() => this.handleRemove(article.id)}>supprimer</Button>
                     {
                         this.state.isInEditMode ?
