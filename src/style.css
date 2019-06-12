@@ -12,3 +12,14 @@ input[type="text"], input[type="number"] {
     width: 100px;
     margin: 0 8px 8px 0;
   }
+
+/*******************************/
+/********* Custom Ant **********/
+/*******************************/
+
+  .ant-badge {
+    position: relative;
+    bottom: 39px;
+    left: 65px;
+    display: inline-flex;
+  }
