@@ -1,10 +1,10 @@
 import React from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button} from 'antd';
 
 class Forms extends React.Component {
     state = {
         name: '',
-        quantity: 0
+        quantity: 0,
     }
 
     handleSubmit = (event) => {
@@ -13,7 +13,6 @@ class Forms extends React.Component {
         this.props.addArticle(article);
         this.setState({ name: '', quantity: 0});
     }
-
     render() {
 
         return (
@@ -34,13 +33,15 @@ class Forms extends React.Component {
                       value={this.state.name} 
                       onChange={(event) => this.setState({ name: event.target.value })}          
                   />
-                  <Button type="primary" htmlType="submit">ajouter</Button> {/*<button type="submit" className="btn btn-success">ajouter</button>*/}
-                </div>
-                    
+                  <Button onClick={this.increase} type="primary" htmlType="submit">ajouter</Button> {/*<button type="submit" className="btn btn-success">ajouter</button>*/}
+                  
+                </div>  
                 </Form>
-            </div> 
+            </div>
+           
         );
     }
+    
 }
 
-export default Forms; 
+export default Forms;

@@ -2,8 +2,11 @@ import React from 'react';
 
 import { Button, Row, Input } from 'antd';
 
+
 class Article extends React.Component {
-    state = { isInEditMode: false }
+    state = { 
+        isInEditMode: false ,
+    }
 
     handleRemove = (articleId) => {
         if( ('Voulez-vous vous supprimer ?')) {

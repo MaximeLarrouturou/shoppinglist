@@ -1,20 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import Form from './Form';
+import Forms from './Form';
 import Itemlist from './ItemList';
+import Badges from './Badge';
 import { Row, Col, Divider, Skeleton, Switch, Card, Icon} from 'antd';
-
 
 class App extends React.Component {
     state = {
-        loading: true,
+        loading: false,
       };
 
       onChange = checked => {
         this.setState({ loading: !checked });
-      };
-    
+      }
+
     render() {
     
         const { loading } = this.state;
@@ -23,16 +23,16 @@ class App extends React.Component {
 
         <Row>
             <Col lg={{ span: 12, offset: 6 }}>
-                <Switch checked={!loading} onChange={this.onChange}  style={{ marginTop: 16, marginLeft:16 }}/>
+                <Switch size="small" checked={!loading} onChange={this.onChange}  style={{ marginTop: 16, marginLeft:16 }}/>
                     <Card style={{ marginTop: 16 }} >
                         <Skeleton loading={loading} active>
                             <h1>Liste de courses</h1>
-                            < Form formTitle="Ajouter des articles à acheter"addArticle={this.props.addArticle}/>
+                            < Forms formTitle="Ajouter des articles à acheter"addArticle={this.props.addArticle}/>
+                  
                         </Skeleton>
                     </Card>
 
-                    <Divider>Achats Prévus</Divider>
-
+                    <Divider>Achats Prévus<Badges></Badges></Divider>
                     <Card
                     style={{ marginTop: 16 }}
                     actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
@@ -48,9 +48,10 @@ class App extends React.Component {
         </Row>
   
         );
+        
     }
+    
 }
-
 
 const mapStateToProps = (state) => {
     return {
@@ -94,5 +95,7 @@ const mapStateToProps = (state) => {
         }
       };
   };
-  
+
   export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+  
